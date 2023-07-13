@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ML_NET_ModelBuilderDemo
+namespace ML_NET_ModelBuilder
 {
     public partial class MLModel1
     {

@@ -9,11 +9,11 @@ using Microsoft.ML.Data;
 using Microsoft.ML.Trainers;
 using Microsoft.ML;
 
-namespace ML_NET_ModelBuilderDemo
+namespace ML_NET_ModelBuilder
 {
     public partial class MLModel1
     {
-        public const string RetrainFilePath =  @"C:\Users\ivanm\Downloads\Datasets\credit_customers.csv";
+        public const string RetrainFilePath =  @"C:\Users\ivanm\source\repos\tecmaivan\CodeMazeGuides\csharp-machine-learning\ML.NET_ModelBuilder\ML.NET_ModelBuilder\DataSets\credit_customers.csv";
         public const char RetrainSeparatorChar = ',';
         public const bool RetrainHasHeader =  true;
 
@@ -93,7 +93,7 @@ namespace ML_NET_ModelBuilderDemo
             var pipeline = mlContext.Transforms.ReplaceMissingValues(new []{new InputOutputColumnPair(@"duration", @"duration"),new InputOutputColumnPair(@"credit_amount", @"credit_amount"),new InputOutputColumnPair(@"age", @"age")})      
                                     .Append(mlContext.Transforms.Concatenate(@"Features", new []{@"duration",@"credit_amount",@"age"}))      
                                     .Append(mlContext.Transforms.Conversion.MapValueToKey(outputColumnName:@"class",inputColumnName:@"class",addKeyValueAnnotationsAsText:false))      
-                                    .Append(mlContext.MulticlassClassification.Trainers.LbfgsMaximumEntropy(new LbfgsMaximumEntropyMulticlassTrainer.Options(){L1Regularization=0.263363F,L2Regularization=22.70568F,LabelColumnName=@"class",FeatureColumnName=@"Features"}))      
+                                    .Append(mlContext.MulticlassClassification.Trainers.LbfgsMaximumEntropy(new LbfgsMaximumEntropyMulticlassTrainer.Options(){L1Regularization=0.06240616F,L2Regularization=7.087903F,LabelColumnName=@"class",FeatureColumnName=@"Features"}))      
                                     .Append(mlContext.Transforms.Conversion.MapKeyToValue(outputColumnName:@"PredictedLabel",inputColumnName:@"PredictedLabel"));
 
             return pipeline;
